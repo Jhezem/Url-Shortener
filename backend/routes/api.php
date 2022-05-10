@@ -20,3 +20,4 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::get('most-viewed', [UrlController::class, 'index']);
+Route::get('short', [UrlController::class, 'store']);
