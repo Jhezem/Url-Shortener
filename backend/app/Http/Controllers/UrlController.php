@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Url;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class UrlController extends Controller
 {
@@ -25,7 +27,15 @@ class UrlController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->original_url){
+            $new_url = new Url();
+            $new_url->original_url = $request->original_url;
+            $new_url->views = 0;
+            $new_url->shorten_url = Str::random(6);
+            $new_url->save();
+
+            return $new_url;
+        }
     }
 
     /**
